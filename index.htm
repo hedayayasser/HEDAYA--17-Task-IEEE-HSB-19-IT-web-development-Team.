@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html class='no-js' lang='en'>
+  <head>
+    <meta charset='utf-8' />
+    <title></title>
+    <meta content='' name='description' />
+    <meta content='' name='author' />
+    <meta content='width=device-width, initial-scale=1.0' name='viewport' />
+    <link id="cssFile" href='stylesheets/screen1.css' media='all' rel='stylesheet' />
+       
+  </head>
+  <body>
+		<main>
+    <div id='container'>
+      <header>
+      	<h1>Here is my sample </h1>
+      </header>
+      <div id='main' role='main'>
+      	<ul>
+      		<li>List Item 1</li>
+      		<li>List Item 2</li>
+      		<li>List Item 3</li>
+      		<li>
+      			</button> button</button>
+      			<button class="primary"> button</button>
+      			<button class="disabled"> a button</button>
+	      	</li>
+      	</ul>
+			</div>
+			</main>
+			<aside>
+      	<button> button</button>
+      	<button class="primary"> button</button>
+      	<button class="disabled"> button</button>
+      <aside>
+    </div>
+    <div class="changeCSS">
+    	<button id="chgCSS" class="bigButton"> Change CSS </button>
+    </div>
+   
+    <script>
+    	$('#chgCSS').click(function(){
+    		var CSSvals = ['stylesheets/screen1.css', 'stylesheets/screen.css', 'stylesheets/screen2.css'],
+    			setVal = ""; 
+    		switch ($('#cssFile').attr('href')) {
+    			case CSSvals[0]:
+    				setVal = CSSvals[1];
+    			break;
+    			case CSSvals[1]:
+    				setVal = CSSvals[2];
+    			break;
+    			default: 
+    				setVal = CSSvals[0];
+    			break;
+    		}
+    		$('#cssFile').attr('href',setVal);
+    	})
+    </script>
+      
+  </body>
+</html>

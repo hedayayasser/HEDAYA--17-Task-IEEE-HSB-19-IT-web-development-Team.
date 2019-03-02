@@ -1,0 +1,115 @@
+@import "susy";
+@import "sass-breakpoint"; 
+$breakpoints: (
+  "xs": 0px,    //targeting <568px devices (e.g. all iPhones <6)
+  "sm": 568px,  //targeting >=568px devices (e.g. iPhones >=6)
+  "md": 768px,  //targeting >=768px tablets (e.g. portrait iPad)
+  "lg": 1004px  //targeting >=1024px tablets (e.g. landscape iPad) and desktops but leaving room for the scroll bar
+);
+
+
+
+$susy: (
+  /* Tells Susy to use 12 columns */
+  columns: 12,
+  /* Tells Susy that the container has a max-width of 1120px */
+  container: 1120px,
+  /* Tells Susy to use border-box */
+  global-box-sizing: border-box,
+  math:fluid, 
+  );
+
+body {
+    text-align: center;
+    > #container {
+      text-align:left;
+      margin:0 auto;
+      width:500px;
+    }
+  }
+  
+  
+  header {
+    h1 {
+      font-size:26px; margin-bottom:26px;
+    }
+  }
+  div[role="main"] {
+    @include background-image(linear-gradient(lighten($color1, 30%), lighten($color2, 30%)));
+    @include border-radius($border-radius * 3.5, $border-radius * 3.5 ); 
+    border:3px solid $color2;
+    padding:$border-radius;
+    margin-bottom:25px; 
+    
+    ul {
+      padding-top:14px;
+    }
+    li {
+      color:$fontcolor1;
+      margin-bottom:12px;
+    }
+  }
+  
+  button {
+    //leverages the buttons mixin
+    @include buttons();
+  }
+  @mixin buttons($basicBorder:1px, $gradient1:#fff, $gradient2:#d8dee7){
+    button{
+      border:$basicBorder solid #c7cace;
+      //brings in Compass' background-image mixin:  http://compass-style.org/reference/compass/css3/images/
+      @include background-image(linear-gradient($gradient1, $gradient2));
+      padding:3px 14px;
+      font-size:12px;
+      color:#3b557d;
+      //brings in Compass' border-radius mixin: http://compass-style.org/reference/compass/css3/border_radius/
+      @include border-radius($border-radius, $border-radius);
+      cursor:pointer;
+      
+      //& attribute adds 
+      
+      &.primary {
+        border:2px solid #3b557d; 
+        padding:5px 15px; 
+        //requires a $border-radius variable
+        @include border-radius($border-radius + 2, $border-radius + 2); 
+      }
+      &.disabled {
+        opacity: .8;
+      }
+      &:hover {
+        @include background-image(linear-gradient($gradient2, $gradient1));
+      }  
+    } 
+  }
+  
+$color1: #63bdd7;
+$color2: #9c4228;
+$fontcolor1: #333;
+$fontcolor2: #9c4228;
+$border-radius: 7px; 
+
+
+
+ 
+
+//Uses Sass' color modifying functions to adjust colors
+
+$color1: #a9c4e5;
+$color2: darken($color1, 40); 
+$fontcolor1: darken($color1, 80);
+$fontcolor2: lighten($color1, 50);
+$border-radius: 4px;  
+
+
+@import "basics";  
+@include breakpoint(500px) {
+    main {
+      @include span(8);
+    
+    }
+
+aside{
+ @include span(4 at 9);
+}
+}
